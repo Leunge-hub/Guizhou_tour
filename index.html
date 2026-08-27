@@ -151,9 +151,15 @@ function draw_card() {
 
 canvas.addEventListener("click", (e) => {
     let rect = canvas.getBoundingClientRect();
-    let ex = e.clientX - rect.left;
-    let ey = e.clientY - rect.top;
 
+    // 換算手機螢幕與 1200x780 畫布的真實比例
+    let scaleX = canvas.width / rect.width;
+    let scaleY = canvas.height / rect.height;
+
+    // 將真實點擊位置乘上縮放比例
+    let ex = (e.clientX - rect.left) * scaleX;
+    let ey = (e.clientY - rect.top) * scaleY;
+    
     if (proc === 0) {
         if (ex >= 300 && ex <= 900 && ey >= 270 && ey <= 370) {
             use_photo_bg = !use_photo_bg;
