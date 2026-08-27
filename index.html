@@ -2,6 +2,8 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <!-- 新增這行：讓手機瀏覽器正確辨識螢幕寬度，不再預設為電腦版大小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>朱老師貴州旅行</title>
     <style>
         body {
@@ -9,13 +11,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* 建議將 height 改為 min-height，在手機滑動時體驗更好 */
             margin: 0;
             font-family: "Microsoft JhengHei", sans-serif;
         }
         canvas {
             background-color: ivory;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            /* 新增下面這兩行：讓 1200px 的畫布能自動縮放，完美塞進手機螢幕內 */
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
